@@ -1,4 +1,4 @@
-package com.example.wsappsiav.Entities;
+package com.example.wsappsiav.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

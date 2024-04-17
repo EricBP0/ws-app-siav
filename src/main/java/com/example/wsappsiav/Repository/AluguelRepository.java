@@ -1,6 +1,6 @@
-package com.example.wsappsiav.Repositories;
+package com.example.wsappsiav.Repository;
 
-import com.example.wsappsiav.Entities.Aluguel;
+import com.example.wsappsiav.Entity.Aluguel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
