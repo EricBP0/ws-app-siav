@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.List;
 
@@ -26,6 +25,12 @@ public class ClienteController {
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Long id) {
         return clienteService.buscarClientePorId(id)
+                .map(cliente -> new ResponseEntity<>(cliente, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @GetMapping("/{cpfcnpj}")
+    public ResponseEntity<Cliente> buscarClientePorCpfCnpj(@PathVariable String cpfcnpj) {
+        return clienteService.buscarClientePorCpfCnpj(cpfcnpj)
                 .map(cliente -> new ResponseEntity<>(cliente, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

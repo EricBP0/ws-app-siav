@@ -28,5 +28,7 @@ public class ClienteService {
     public void deletarCliente(Long id) {
         clienteRepository.deleteById(id);
     }
+
+    public Optional<Cliente> buscarClientePorCpfCnpj(String cpfCnpj){return clienteRepository.findClienteByCpfCnpj(cpfCnpj);};
 }
 
