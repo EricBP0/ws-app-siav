@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Service
 public class AluguelService {
-
     @Autowired
     private AluguelRepository aluguelRepository;
 

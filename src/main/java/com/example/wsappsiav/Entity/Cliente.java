@@ -1,18 +1,20 @@
 package com.example.wsappsiav.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "cliente")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "cliente_nome")
     private String clienteNome;
+    @Column(name = "cpf_cnpj")
     private String cpfCnpj;
     private String endereco;
     private String telefone;
@@ -22,8 +24,8 @@ public class Cliente {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(final Number id) {
+        this.id = id != null ? id.longValue() : null;
     }
 
     public String getClienteNome() {
