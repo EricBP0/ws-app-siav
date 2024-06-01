@@ -17,6 +17,8 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
+    public Cliente getClientById(Long id){return clienteRepository.getClienteById(id);}
+
     public Optional<Cliente> buscarClientePorId(Long id) {
         return clienteRepository.findById(id);
     }
@@ -29,6 +31,6 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
-    public Optional<Cliente> buscarClientePorCpfCnpj(String cpfCnpj){return clienteRepository.findClienteByCpfCnpj(cpfCnpj);};
+    public Cliente buscarClientePorCpfCnpj(String cpfCnpj){return clienteRepository.findClienteByCpfCnpj(cpfCnpj);};
 }
 

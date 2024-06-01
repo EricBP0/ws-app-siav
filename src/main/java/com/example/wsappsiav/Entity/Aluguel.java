@@ -2,32 +2,31 @@ package com.example.wsappsiav.Entity;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Table(schema = "siav", name = "tb_aluguel")
 public class Aluguel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-
-    @ManyToOne
-    @JoinColumn(name = "veiculo_id")
-    private Veiculo veiculo;
-
-    @Temporal(TemporalType.DATE)
+    private String nome;
+    @Column(name = "data_inicio")
     private Date dataInicio;
 
-    @Temporal(TemporalType.DATE)
+    @Column(name = "data_fim")
     private Date dataFim;
 
-    private BigDecimal valorTotal;
-    private String status;
+    @JoinColumn(name = "veiculo_id")
+    @ManyToOne
+    private Veiculo veiculoId;
+
+    @JoinColumn(name = "cliente_id")
+    @ManyToOne
+    private Cliente clienteId;
+
+    private double valor;
 
     public Long getId() {
         return id;
@@ -37,20 +36,12 @@ public class Aluguel {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Date getDataInicio() {
@@ -69,19 +60,27 @@ public class Aluguel {
         this.dataFim = dataFim;
     }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public Veiculo getVeiculoId() {
+        return veiculoId;
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setVeiculoId(Veiculo veiculoId) {
+        this.veiculoId = veiculoId;
     }
 
-    public String getStatus() {
-        return status;
+    public Cliente getClienteId() {
+        return clienteId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setClienteId(Cliente clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }

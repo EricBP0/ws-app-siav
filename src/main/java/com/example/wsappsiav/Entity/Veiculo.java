@@ -1,11 +1,12 @@
 package com.example.wsappsiav.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.wsappsiav.Service.GrupoService;
+import jakarta.persistence.*;
+
+import java.util.Optional;
 
 @Entity
+@Table(schema = "siav", name = "tb_veiculo")
 public class Veiculo {
 
     @Id
@@ -13,10 +14,24 @@ public class Veiculo {
     private Long id;
 
     private String marca;
-    private String modelo;
-    private int ano;
-    private String cor;
-    private String status;
+
+    private double diaria;
+
+    private String placa;
+
+    @JoinColumn(name = "grupo_id")
+    @ManyToOne
+    private Grupo grupoId;
+
+    private String type;
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
 
     public Long getId() {
         return id;
@@ -34,35 +49,27 @@ public class Veiculo {
         this.marca = marca;
     }
 
-    public String getModelo() {
-        return modelo;
+    public double getDiaria() {
+        return diaria;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setDiaria(double diaria) {
+        this.diaria = diaria;
     }
 
-    public int getAno() {
-        return ano;
+    public Grupo getGrupoId() {
+        return grupoId;
     }
 
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setGrupoId(Grupo grupoId) {
+        this.grupoId = grupoId;
     }
 
-    public String getCor() {
-        return cor;
+    public String getType() {
+        return type;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setType(String type) {
+        this.type = type;
     }
 }
